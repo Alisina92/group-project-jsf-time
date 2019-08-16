@@ -22,7 +22,11 @@ YOU MAY EDIT THE LINES BELOW
  * @return {Number}
  */
 function numberOfDaysUntilNextClass(currentDay, daysOfWeek) {
-  return -1;
+  currentDay = new Date(); // the new date method gets the number of the day.
+  let numberOfCurrentDay = currentDay.getDay(); // getDay displays the the current day number.
+  let daysOfWeekLength = daysOfWeek.length - 1; // daysOfweek is an array so by getting the length we would have number of full week.Since the class is on Saturday we need to we need access the length-1.
+  let dayRemainedUntilClass = daysOfWeekLength - numberOfCurrentDay; // so calcuating the remaining day would be simple the length of an array minus the number of currentDay.
+  return dayRemainedUntilClass;
 }
 
 /**

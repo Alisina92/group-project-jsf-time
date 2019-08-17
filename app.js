@@ -46,7 +46,17 @@ function numberOfDaysUntilNextClass(currentDay, daysOfWeek) {
  * @return {Number}
  */
 function hoursUntilNextDinner(currentHour, hourOfDinner) {
-  return -1;
+  if (currentHour <= hourOfDinner) {
+    //to be able to calculate the remaining time we need an if statement to get remaining before and after dinner time.
+    let hoursUntilNextDinner = hourOfDinner - currentHour; //if dinner time not passed HourOfDinner - currentHour will display remaining time.
+    return hoursUntilNextDinner; // display the result.
+  } else if (currentHour > hourOfDinner) {
+    //if the current hour passed the time.
+    let hoursOfDayLength = hoursOfDay.length; //need the length of an array to display 24 hours.
+    let totalOfhours = currentHour + hoursOfDayLength; //to get the total hours + currentTime.
+    let hoursUntilNextDinnerAfterDinnerTime = totalOfhours - hourOfDinner; // to get the time left to dinner we minus the hour of dinner from the total hours.
+    return hoursUntilNextDinnerAfterDinnerTime; // return the result.
+  }
 }
 
 /**

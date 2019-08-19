@@ -74,9 +74,9 @@ function hoursUntilNextDinner(currentHour, hourOfDinner) {
 function hoursPassedToday(currentHour, hoursOfDay) {
   //filter the array and return the elements that are less than current hour.
   let filteredArr = hoursOfDay.filter(function(elements) {
-    return elements < currentHour;
+    return elements <= currentHour;
   });
-
+  console.log(filteredArr);
   return filteredArr;
 }
 
@@ -124,7 +124,17 @@ function hoursAheadToday(currentHour, hoursOfDay) {
  * @return {Number}
  */
 function hoursToStudy(currentHour, hoursOfDay, currentDay, daysOfWeek) {
-  return -1;
+  currentDay = new Date(); // the new date method gets the number of the day.
+  let numberOfCurrentDay = currentDay.getDay();
+  let daysOfWeekLength = daysOfWeek.length - 1;
+  let theDaysLeft = daysOfWeekLength - numberOfCurrentDay;
+  let totalHours = theDaysLeft * hoursOfDay.length;
+  let filteredArr = hoursOfDay.filter(function(elements) {
+    return elements <= currentHour;
+  });
+  let lengthOfFilteredPassArr = filteredArr.length - 11;
+  let remaingHours = totalHours - lengthOfFilteredPassArr;
+  return remaingHours;
 }
 
 /*
